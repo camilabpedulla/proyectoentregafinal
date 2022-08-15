@@ -7,3 +7,9 @@ class FormularioBusqueda (Form):
 
 class FormularioInsertarDatos(Form):
     marca = CharField(max_length=150)
+
+class FormularioInsertarDatos_perro(Form):
+    marca = CharField(max_length=150)
+
+class FormularioInsertarDatos_peces(Form):
+    marca = CharField(max_length=150)

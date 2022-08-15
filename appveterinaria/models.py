@@ -5,20 +5,24 @@ from django.db import models
 
 class Alimentogato(models.Model):
     marca = models.CharField(max_length=150)
-    precio = models.FloatField()
-    fecha_vencimiento= models.DateField(blank=True, null=True)
-    stock = models.IntegerField()
+    precio = models.IntegerField (default=0)
+    info = models.CharField(max_length=150, default=0)
+    
+    def __str__(self):
+        return f"{self.precio} - {self.marca} - {self.info}"
 
 class Alimentoperro(models.Model):
     marca = models.CharField(max_length=150)
-    precio = models.FloatField()
-    fecha_vencimiento= models.DateField(blank=True, null=True)
-    stock = models.IntegerField()
+    precio = models.IntegerField (default=0)
+    info= models.CharField(max_length=150, default=0)
+    
+    def __str__(self):
+        return f"{self.precio} - {self.marca} - {self.info}"
 
 class Alimentopeces(models.Model):
     marca = models.CharField(max_length=150)
-    precio = models.FloatField()
-    fecha_vencimiento= models.DateField(blank=True, null=True)
-    stock = models.IntegerField()
+    precio = models.IntegerField (default=0)
+    info = models.CharField(max_length=150, default=0)
+    
     def __str__(self):
-        return f"{self.precio} - {self.marca}"
+        return f"{self.precio} - {self.marca} - {self.info}"

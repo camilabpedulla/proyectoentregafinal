@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from appveterinaria.models import Alimentogato, Alimentopeces, Alimentoperro
-from appveterinaria.forms import FormularioBusqueda, FormularioInsertarDatos
+from appveterinaria.forms import FormularioBusqueda, FormularioInsertarDatos,FormularioInsertarDatos_peces, FormularioInsertarDatos_perro
 
 def index (request):
 
@@ -41,28 +41,79 @@ def indea (request):
     return render ( request, "appveterinaria/info.html")
 
 
-def indei (request):
+def insertardatosgatos (request):
 
     if request.method == 'GET':
     
         formularios = FormularioInsertarDatos()
 
-        return render ( request,"appveterinaria/busqueda.html",{"formularios" : formularios})
+        return render ( request,"appveterinaria/cargadatosgatos.html",{"formularios" : formularios})
 
     else:
         formularios = FormularioInsertarDatos(request.POST)
        
         if formularios.is_valid():
-            datas= formularios.cleaned_data  
 
-            marca = datas.get ["marca"]
-            alimento =   Alimentogato (marca=marca) 
+            data= formularios.cleaned_data  
+
+            marca = data.get ("marca")
+            producto =   Alimentogato (marca=marca) 
             
-            alimento.save ()
+            producto.save ()
 
-            return render (request, "appveterinaria/hola.html" )
+            return HttpResponse(f"La informacion fue ingresada correctamente")
 
         else:
             return  HttpResponse (f"La informacion ingresada no es correcta")
 
 
+def insertardatosperro (request):
+
+    if request.method == 'GET':
+    
+        formularios = FormularioInsertarDatos_perro()
+
+        return render ( request,"appveterinaria/cargadatosperro.html",{"formularios" : formularios})
+
+    else:
+        formularios = FormularioInsertarDatos_perro(request.POST)
+       
+        if formularios.is_valid():
+
+            data= formularios.cleaned_data  
+
+            marca = data.get ("marca")
+            producto =   Alimentoperro (marca=marca) 
+            
+            producto.save ()
+
+            return HttpResponse(f"La informacion fue ingresada correctamente")
+
+        else:
+            return  HttpResponse (f"La informacion ingresada no es correcta")
+
+
+def insertardatospeces (request):
+
+    if request.method == 'GET':
+    
+        formularios = FormularioInsertarDatos_peces()
+
+        return render ( request,"appveterinaria/cargadatospeces.html",{"formularios" : formularios})
+
+    else:
+        formularios = FormularioInsertarDatos_peces(request.POST)
+       
+        if formularios.is_valid():
+
+            data= formularios.cleaned_data  
+
+            marca = data.get ("marca")
+            producto =   Alimentopeces (marca=marca) 
+            
+            producto.save ()
+
+            return HttpResponse(f"La informacion fue ingresada correctamente")
+
+        else:
+            return  HttpResponse (f"La informacion ingresada no es correcta")

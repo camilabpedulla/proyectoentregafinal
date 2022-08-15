@@ -1,0 +1,19 @@
+{%extends "appveterinaria/base.html" %} 
+
+{% block insertardatosperro %}
+                <div class="col mb-5">
+                        
+                          <h6> Qué marca de alimento de perro le gustaría que incluyeramos en nuestra web? </h6>     
+
+                                     <form  method="post" > {% csrf_token %}
+    
+                                     {{ formularios.as_p }}
+
+                                    <input type="submit" value="Enviar sugerencia">
+                   
+                        
+                    </div>
+
+
+    
+{% endblock insertardatosperro %} 

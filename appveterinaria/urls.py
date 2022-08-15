@@ -8,7 +8,9 @@ urlpatterns =  [
     path ("peces/", indez,name="peces"),
     path ("gatos/", indef, name="gatos"),
     path ("info/", indea, name="info"),
-    path ("busqueda/", indei, name="busqueda"),
+    path ("sugerenciasgatos/", insertardatosgatos, name="gatosbus"),
+    path ("sugerenciasperro/", insertardatosperro, name="perrobus"),
+    path ("sugerenciaspeces/", insertardatospeces, name="pecesbus"),
  
 ]   
 
